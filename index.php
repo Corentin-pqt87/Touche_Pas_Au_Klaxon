@@ -4,13 +4,10 @@
 /**
  * connexion de l'utilisateur
  */
-if( !empty($_SERVER['HTTPS']) && ('on' == $_SERVER['HTTPS'])){
-    $uri = 'https://';
-} else {
-    $uri = 'http://';
+if (!isset($_SESSION['user_id'])) {
+    header('Location: ./Template/login_Template.php');
+    exit();
 }
-$uri .= $_SERVER['HTTP_HOST'];
-header('Location: '.$uri.'/Template/login_Template.php');
 
 /** 
 * on charge le model

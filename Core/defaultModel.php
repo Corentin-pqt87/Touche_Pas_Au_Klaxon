@@ -18,3 +18,10 @@ function findAll($stmt) {
         die("Une erreur s'est produite lors de lz récupération des données");
     }
 }
+
+function findOnePrepared($stmt, $params) {
+    $bdd = connection();
+    $query = $bdd->query($stmt);
+    $query->execute($params);
+    return $query->fetch(PDO::FETCH_ASSOC);
+}
