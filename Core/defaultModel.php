@@ -21,7 +21,7 @@ function findAll($stmt) {
 
 function findOnePrepared($stmt, $params) {
     $bdd = connection();
-    $query = $bdd->query($stmt);
+    $query = $bdd->prepare($stmt);
     $query->execute($params);
     return $query->fetch(PDO::FETCH_ASSOC);
 }

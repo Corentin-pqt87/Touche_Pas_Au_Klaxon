@@ -10,7 +10,7 @@
         <main>
             <h1>Touche Pas Au Klaxon</h1>
             <h2>Connexion</h2>
-            <form action="login.php" method="post">
+            <form action="../Core/login.php" method="post">
                 <fieldset>
                     <legend>Saisissez votre nom et votre mot de passe</legend>
                     <br><label for="name">Nom</label><br>
