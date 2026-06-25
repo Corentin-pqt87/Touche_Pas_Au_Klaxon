@@ -1,5 +1,17 @@
 <?php
 
+
+/**
+ * connexion de l'utilisateur
+ */
+if( !empty($_SERVER['HTTPS']) && ('on' == $_SERVER['HTTPS'])){
+    $uri = 'https://';
+} else {
+    $uri = 'http://';
+}
+$uri .= $_SERVER['HTTP_HOST'];
+header('Location: '.$uri.'/Template/login_Template.php');
+
 /** 
 * on charge le model
 * require "./model/postModel.php";
@@ -14,15 +26,3 @@ $posts = getPosts();
  * require "./templates/home.php";
 */ 
 require __DIR__ . "/templates/home.php";
-
-
-/**
- * connexion de l'utilisateur
- */
-if( !empty($_SERVER['HTTPS']) && ('on' == $_SERVER['HTTPS'])){
-    $uri = 'https://';
-} else {
-    $uri = 'http://';
-}
-$uri .= $_SERVER['HTTP_HOST'];
-header('Location: '.$uri.'/Template/login_Template.php');
