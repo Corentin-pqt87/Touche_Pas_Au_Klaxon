@@ -1,7 +1,7 @@
 <?php
 
 //require "database.php";
-require __DIR__ . "/database.php";
+require __DIR__ . "/dataBase.php";
 
 function findAll($stmt) {
     // on charge la connection a la base de donnée

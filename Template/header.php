@@ -1,3 +1,8 @@
+<?php 
+if (session_status() === PHP_SESSION_NONE) {
+    session_start(); 
+}
+?>
 <!DOCTYPE html>
 <div class="header">
     <h1>Touche Pas Au Klaxon</h1>
@@ -17,17 +22,18 @@
              */
         ?>
         <?php if (!isset($_SESSION['user_id'])): ?>
-            <a href="Template/login_Template.php" class="btn">Connexion/Inscription</a>
+            <a href="/Template/login_Template.php" class="btn">Connexion</a> | 
+            <a href="/Template/register_Template.php" class="btn">Inscription</a>
         <?php else: ?>
             <p>Bonjour, <?= htmlspecialchars($_SESSION['user_name']) ?> !</p>
             
-            <?php if ($_SESSION['user_role'] == 1): //1 = Admin ?>
-                <a href="Page/admin.php" class="btn">Tableau de bord administrateur</a>
+            <?php if ($_SESSION['user_role'] == 1): // Admin ?>
+                <a href="/Page/admin.php" class="btn">Tableau de bord administrateur</a>
             <?php else: ?>
-                <a href="Page/nouveau_trajet.php" class="btn">Création d'un nouveau trajet</a>
+                <a href="/Page/nouveau_trajet.php" class="btn">Création d'un nouveau trajet</a>
             <?php endif; ?>
 
-            <a href="Core/logout.php">Déconnexion</a>
+            <a href="/Core/logout.php" class="btn-logout">Déconnexion</a>
         <?php endif; ?>
     </nav>
 </div>

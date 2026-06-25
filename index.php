@@ -5,7 +5,7 @@
  * connexion de l'utilisateur
  */
 if (!isset($_SESSION['user_id'])) {
-    header('Location: ./Template/login_Template.php');
+    header('Location: ./Template/home.php');
     exit();
 }
 
