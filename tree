@@ -1,0 +1,29 @@
+.
+├── Asset
+├── Core
+│   ├── dataBase.php
+│   ├── defaultModel.php
+│   ├── login.php
+│   ├── logout.php
+│   └── register.php
+├── Db
+│   ├── start.sh
+│   └── table.sql
+├── index.php
+├── Model
+│   ├── postModel.php
+│   └── userModel.php
+├── Page
+│   └── Accueil.php
+├── README.md
+├── run.sh
+├── Style
+│   ├── main.css
+│   └── main.scss
+└── Template
+    ├── footer.php
+    ├── header.php
+    ├── home.php
+    ├── login_Template.php
+    └── register_Template.php
+
