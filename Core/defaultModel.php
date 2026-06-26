@@ -11,7 +11,7 @@ function findAll($stmt) {
 
     $result = $query->fetchAll();
 
-    if ($result) {
+    if ($result !== false) {
         // on retourne le résultat
         return $result;
     } else {

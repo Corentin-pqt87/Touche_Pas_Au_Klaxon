@@ -1,10 +1,9 @@
 <?php
 
-session_start();
-
 /**
  * connexion de l'utilisateur
  */
+session_start();
 if (!isset($_SESSION['user_id'])) {
     header('Location: ./Page/Accueil.php');
     exit();
@@ -12,15 +11,18 @@ if (!isset($_SESSION['user_id'])) {
 
 /** 
 * on charge le model
-* require "./model/postModel.php";
 */
 require __DIR__ . "/Model/postModel.php";
+
+
 /** 
  * on appelle la fonction getPosts et on stocke les résultats dans une variable $posts
 */ 
 $posts = getPosts();
+
+
 /** 
- * on charge le temple de la page
- * require "./templates/home.php";
+ * redirige vers la page d'accueil
 */ 
-require __DIR__ . "/Templates/home.php";
+
+require_once __DIR__ . "/Page/Accueil.php";
