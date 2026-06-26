@@ -29,3 +29,7 @@ function saveUser($name, $mail, $phone, $hashedPassword) {
         'password' => $hashedPassword
     ]);
 }
+
+function getAllUsers() {
+    return findAll('SELECT idusers, name, mail, phone, idrole FROM users');
+}

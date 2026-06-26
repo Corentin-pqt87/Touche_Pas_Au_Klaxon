@@ -14,16 +14,21 @@
 │   ├── postModel.php
 │   └── userModel.php
 ├── Page
-│   └── Accueil.php
+│   ├── Accueil.php
+│   ├── Admin
+│   │   └── Users.php
+│   └── admin.php
 ├── README.md
 ├── run.sh
 ├── Style
 │   ├── main.css
 │   └── main.scss
-└── Template
-    ├── footer.php
-    ├── header.php
-    ├── home.php
-    ├── login_Template.php
-    └── register_Template.php
+├── Template
+│   ├── footer.php
+│   ├── header.php
+│   ├── home.php
+│   ├── login_Template.php
+│   └── register_Template.php
+└── tree
+
 
