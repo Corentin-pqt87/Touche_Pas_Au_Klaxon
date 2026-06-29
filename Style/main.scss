@@ -1,0 +1,25 @@
+/*
+* ------------------
+* PALETTE DE COULEUR
+*--------------------
+*/
+$light-blue: #f1f8fc;
+$my-blue: #0074c7;
+$darck-blue: #00497c;
+$my-grey: #384050;
+$my-red: #cd2c2e;
+$myègreen: #82b864;
+
+
+body{
+    background-color: $light-blue;
+}
+footer{
+    display: flex;
+    width: 100%;
+    background-color: $darck-blue;
+    color: $light-blue;
+}
+header{
+    background-color: $light-blue;
+}

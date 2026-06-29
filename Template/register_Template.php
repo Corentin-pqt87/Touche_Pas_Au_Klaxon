@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Inscription</title>
         <meta name="robots" content="noindex">
+        <link rel="stylesheet" href="/../Style/main.css" />
     </head>
     <body>
         <main>

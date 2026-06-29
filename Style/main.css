@@ -1,0 +1,21 @@
+/*
+* ------------------
+* PALETTE DE COULEUR
+*--------------------
+*/
+body {
+  background-color: #f1f8fc;
+}
+
+footer {
+  display: flex;
+  width: 100%;
+  background-color: #00497c;
+  color: #f1f8fc;
+}
+
+header {
+  background-color: #f1f8fc;
+}
+
+/*# sourceMappingURL=main.css.map */
