@@ -5,7 +5,7 @@ if (session_status() === PHP_SESSION_NONE) {
 ?>
 <!DOCTYPE html>
 <div class="header">
-    <h1>Touche Pas Au Klaxon</h1>
+    <a href="/Page/Accueil.php"><h1>Touche Pas Au Klaxon</h1></a>    
     <nav>
         <?php 
             /**
