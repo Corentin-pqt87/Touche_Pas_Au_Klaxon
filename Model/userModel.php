@@ -69,3 +69,6 @@ function getUserById($id) {
     return findOnePrepared('SELECT idusers, name, mail, phone, idrole FROM users WHERE idusers = :id', ['id' => $id]);
 }
 
+function findAllUsersForSelect() {
+    return findAll('SELECT idusers, name FROM users');
+}
