@@ -5,48 +5,442 @@
 */
 $light-blue: #f1f8fc;
 $my-blue: #0074c7;
-$darck-blue: #00497c;
+$dark-blue: #00497c;
 $my-grey: #384050;
 $my-red: #cd2c2e;
-$myègreen: #82b864;
+$my-green: #82b864;
 
+// Seules 2 neutres "techniques" en dehors de la palette : utilisées uniquement
+// pour le texte clair sur fonds foncés et les fonds de carte sur fonds clairs.
+$white: #ffffff;
+$black: #000000;
 
-body{
-    background-color: $light-blue;
+// Teintes dérivées des variables ci-dessus (on reste sur la palette imposée)
+$blue-tint: lighten($my-blue, 38%);
+$blue-tint-dark: darken($my-blue, 10%);
+$grey-border: lighten($my-grey, 55%);
+$grey-muted: lighten($my-grey, 25%);
+$red-tint: lighten($my-red, 42%);
+$green-tint: lighten($my-green, 35%);
+
+/*
+* ------------------
+* BASE / RESET LÉGER
+*--------------------
+*/
+* {
+    box-sizing: border-box;
 }
-footer{
+
+html {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    background-color: $light-blue;
+    color: $my-grey;
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    line-height: 1.5;
+}
+
+main {
+    flex: 1 0 auto;
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+}
+
+h1, h2, h3 {
+    color: $dark-blue;
+    font-weight: 700;
+}
+
+h1 {
+    margin: 0;
+    font-size: 1.6rem;
+}
+
+h2 {
+    border-bottom: 2px solid $blue-tint;
+    padding-bottom: 0.4rem;
+    margin-top: 2rem;
+}
+
+a {
+    color: $my-blue;
+    text-decoration: none;
+
+    &:hover,
+    &:focus-visible {
+        color: $dark-blue;
+        text-decoration: underline;
+    }
+
+    &:focus-visible {
+        outline: 2px solid $my-blue;
+        outline-offset: 2px;
+    }
+}
+
+/*
+* ------------------
+* BOUTONS
+*--------------------
+*/
+@mixin bouton-base {
+    display: inline-block;
+    padding: 0.55rem 1.1rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.15s ease-in-out, transform 0.05s ease-in-out;
+
+    &:active {
+        transform: translateY(1px);
+    }
+}
+
+.btn {
+    @include bouton-base;
+    background-color: $my-blue;
+    color: $white;
+
+    &:hover,
+    &:focus-visible {
+        background-color: $dark-blue;
+        color: $white;
+        text-decoration: none;
+    }
+}
+
+.btn-logout {
+    @include bouton-base;
+    background-color: transparent;
+    color: $my-red;
+    border: 1px solid $my-red;
+
+    &:hover,
+    &:focus-visible {
+        background-color: $my-red;
+        color: $white;
+        text-decoration: none;
+    }
+}
+
+button,
+input[type="submit"] {
+    @include bouton-base;
+    background-color: $my-blue;
+    color: $white;
+
+    &:hover,
+    &:focus-visible {
+        background-color: $dark-blue;
+    }
+}
+
+// Boutons de suppression dans les tableaux d'administration (Agences.php, Users.php)
+table form button[type="submit"] {
+    background-color: $my-red;
+    padding: 0.35rem 0.7rem;
+    font-size: 0.85rem;
+
+    &:hover,
+    &:focus-visible {
+        background-color: darken($my-red, 12%);
+    }
+}
+
+/*
+* ------------------
+* HEADER / NAVIGATION
+*--------------------
+*/
+header {
+    width: 100%;
+}
+
+.header {
+    background-color: $light-blue;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    border-bottom: 3px solid $my-blue;
+
+    h1 {
+        font-size: 1.4rem;
+        color: $dark-blue;
+    }
+
+    nav {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.75rem;
+
+        p {
+            margin: 0;
+            color: $my-grey;
+            font-weight: 600;
+        }
+    }
+}
+
+/*
+* ------------------
+* FOOTER
+*--------------------
+*/
+footer {
     display: flex;
     width: 100%;
-    background-color: $darck-blue;
+    background-color: $dark-blue;
     color: $light-blue;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    margin-top: auto;
+    flex-shrink: 0;
 }
-header{
+
+.footer {
+    width: 100%;
+    text-align: center;
+
+    p {
+        margin: 0;
+        font-size: 0.9rem;
+        letter-spacing: 0.5px;
+    }
+}
+
+/*
+* ------------------
+* ACCUEIL
+*--------------------
+*/
+.home {
+    background-color: $blue-tint;
+    border: 1px solid $grey-border;
+    border-radius: 8px;
+    padding: 2.5rem 2rem;
+    text-align: center;
+
+    h2 {
+        border-bottom: none;
+        margin-top: 0;
+    }
+}
+
+/*
+* ------------------
+* TABLEAU DE BORD ADMIN (admin.php)
+*--------------------
+*/
+main > p {
+    background-color: $white;
+    border-left: 4px solid $my-blue;
+    padding: 0.9rem 1.1rem;
+    border-radius: 4px;
+}
+
+/*
+* ------------------
+* FORMULAIRES
+*--------------------
+*/
+form {
+    background-color: $white;
+    border: 1px solid $grey-border;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-top: 1rem;
+    max-width: 480px;
+
+    &[style*="display:inline"] {
+        // formulaires de suppression intégrés dans les lignes de tableau :
+        // pas de carte, pas de largeur contrainte
+        background: none;
+        border: none;
+        padding: 0;
+        margin: 0;
+        max-width: none;
+        display: inline;
+    }
+}
+
+fieldset {
+    border: 1px solid $grey-border;
+    border-radius: 6px;
+    padding: 1rem 1.25rem 1.25rem;
+}
+
+legend {
+    color: $dark-blue;
+    font-weight: 700;
+    padding: 0 0.5rem;
+}
+
+label {
+    display: block;
+    color: $my-grey;
+    font-weight: 600;
+    margin-top: 0.85rem;
+    margin-bottom: 0.25rem;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="password"],
+select {
+    width: 100%;
+    padding: 0.55rem 0.7rem;
+    border: 1px solid $grey-border;
+    border-radius: 4px;
+    background-color: $light-blue;
+    color: $my-grey;
+    font-size: 0.95rem;
+
+    &:focus-visible {
+        outline: none;
+        border-color: $my-blue;
+        box-shadow: 0 0 0 2px $blue-tint;
+    }
+}
+
+input[type="submit"],
+fieldset button[type="submit"] {
+    margin-top: 1.25rem;
+}
+
+main form > a {
+    margin-left: 0.75rem;
+    color: $my-red;
+
+    &:hover,
+    &:focus-visible {
+        color: darken($my-red, 12%);
+    }
+}
+
+/*
+* ------------------
+* MESSAGES DE RETOUR
+*--------------------
+*/
+main p:empty {
+    display: none;
+}
+
+/*
+* ------------------
+* TABLEAUX (Agences.php, Users.php, table.scss d'origine étendu)
+*--------------------
+*/
+table {
+    border-collapse: collapse;
+    border: 2px solid $my-grey;
+    font-family: sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    width: 100%;
+    margin-top: 1rem;
+    background-color: $white;
+}
+
+thead,
+tfoot {
+    background-color: $blue-tint;
+}
+
+th,
+td {
+    border: 1px solid $grey-border;
+    padding: 0.55rem 0.7rem;
+    text-align: left;
+}
+
+th {
+    color: $dark-blue;
+}
+
+tbody > tr:nth-of-type(even) {
     background-color: $light-blue;
 }
 
-table {
-  border-collapse: collapse;
-  border: 2px solid $my-grey;
-  font-family: sans-serif;
-  font-size: 0.8rem;
-  letter-spacing: 1px;
+tbody > tr:hover {
+    background-color: $blue-tint;
 }
-thead,
-tfoot {
-  background-color: rgb(228 240 245);
-}
-th,
-td {
-  border: 1px solid rgb(160 160 160);
-  padding: 8px 10px;
-}
-tbody > tr:nth-of-type(even) {
-  background-color: rgb(237 238 242);
-}
+
 tfoot th {
-  text-align: right;
+    text-align: right;
 }
 
 tfoot td {
-  font-weight: bold;
+    font-weight: bold;
+}
+
+// Permet aux tableaux de défiler horizontalement sur petit écran sans casser la mise en page
+.users-list,
+table {
+    max-width: 100%;
+}
+
+// Liste héritée (ancienne version de Users.php avec <ul class="users-list">)
+.users-list {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    .users_items {
+        background-color: $white;
+        border: 1px solid $grey-border;
+        border-radius: 4px;
+        padding: 0.75rem 1rem;
+    }
+}
+
+/*
+* ------------------
+* RESPONSIVE
+*--------------------
+*/
+@media (max-width: 640px) {
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+
+        nav {
+            width: 100%;
+            justify-content: flex-start;
+        }
+    }
+
+    main {
+        padding: 1.25rem 1rem;
+    }
+
+    form {
+        max-width: 100%;
+    }
+
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
 }

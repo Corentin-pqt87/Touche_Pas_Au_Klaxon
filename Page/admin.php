@@ -33,7 +33,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['user_role'] != 1) {
             <h2>Tableau de bord administrateur</h2>
             <p>Bienvenue, <?= htmlspecialchars($_SESSION['user_name']) ?>.</p>
 
-            <a href="/Page/Admin/Users.php">Liste des utilisateurs</a>
+            <a href="/Page/Admin/Users.php" class="btn">Liste des utilisateurs</a>
             <a href="/Page/Admin/Agences.php" class="btn">Gérer les agences</a>
         </main>
     </body>

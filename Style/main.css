@@ -1,44 +1,380 @@
+@charset "UTF-8";
 /*
 * ------------------
 * PALETTE DE COULEUR
 *--------------------
 */
-body {
-  background-color: #f1f8fc;
+/*
+* ------------------
+* BASE / RESET LÉGER
+*--------------------
+*/
+* {
+  box-sizing: border-box;
 }
 
+html {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  background-color: #f1f8fc;
+  color: #384050;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  line-height: 1.5;
+}
+
+main {
+  flex: 1 0 auto;
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+h1, h2, h3 {
+  color: #00497c;
+  font-weight: 700;
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.6rem;
+}
+
+h2 {
+  border-bottom: 2px solid rgb(137.8, 206.1175879397, 255);
+  padding-bottom: 0.4rem;
+  margin-top: 2rem;
+}
+
+a {
+  color: #0074c7;
+  text-decoration: none;
+}
+a:hover, a:focus-visible {
+  color: #00497c;
+  text-decoration: underline;
+}
+a:focus-visible {
+  outline: 2px solid #0074c7;
+  outline-offset: 2px;
+}
+
+/*
+* ------------------
+* BOUTONS
+*--------------------
+* Couvre les <a class="btn">, <a class="btn-logout"> du header,
+* et les <button>/<input type="submit"> des formulaires.
+*/
+.btn {
+  display: inline-block;
+  padding: 0.55rem 1.1rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.15s ease-in-out, transform 0.05s ease-in-out;
+}
+.btn:active {
+  transform: translateY(1px);
+}
+.btn {
+  background-color: #0074c7;
+  color: #ffffff;
+}
+.btn:hover, .btn:focus-visible {
+  background-color: #00497c;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.btn-logout {
+  display: inline-block;
+  padding: 0.55rem 1.1rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.15s ease-in-out, transform 0.05s ease-in-out;
+}
+.btn-logout:active {
+  transform: translateY(1px);
+}
+.btn-logout {
+  background-color: transparent;
+  color: #cd2c2e;
+  border: 1px solid #cd2c2e;
+}
+.btn-logout:hover, .btn-logout:focus-visible {
+  background-color: #cd2c2e;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+button,
+input[type=submit] {
+  display: inline-block;
+  padding: 0.55rem 1.1rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.15s ease-in-out, transform 0.05s ease-in-out;
+}
+button:active,
+input[type=submit]:active {
+  transform: translateY(1px);
+}
+button,
+input[type=submit] {
+  background-color: #0074c7;
+  color: #ffffff;
+}
+button:hover, button:focus-visible,
+input[type=submit]:hover,
+input[type=submit]:focus-visible {
+  background-color: #00497c;
+}
+
+table form button[type=submit] {
+  background-color: #cd2c2e;
+  padding: 0.35rem 0.7rem;
+  font-size: 0.85rem;
+}
+table form button[type=submit]:hover, table form button[type=submit]:focus-visible {
+  background-color: rgb(154.6144578313, 33.1855421687, 34.6939759036);
+}
+
+/*
+* ------------------
+* HEADER / NAVIGATION
+*--------------------
+*/
+header {
+  width: 100%;
+}
+
+.header {
+  background-color: #f1f8fc;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  border-bottom: 3px solid #0074c7;
+}
+.header h1 {
+  font-size: 1.4rem;
+  color: #00497c;
+}
+.header nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+.header nav p {
+  margin: 0;
+  color: #384050;
+  font-weight: 600;
+}
+
+/*
+* ------------------
+* FOOTER
+*--------------------
+*/
 footer {
   display: flex;
   width: 100%;
   background-color: #00497c;
   color: #f1f8fc;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  margin-top: auto;
+  flex-shrink: 0;
 }
 
-header {
+.footer {
+  width: 100%;
+  text-align: center;
+}
+.footer p {
+  margin: 0;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+}
+
+/*
+* ------------------
+* ACCUEIL
+*--------------------
+*/
+.home {
+  background-color: rgb(137.8, 206.1175879397, 255);
+  border: 1px solid rgb(200, 205.5, 216.5);
+  border-radius: 8px;
+  padding: 2.5rem 2rem;
+  text-align: center;
+}
+.home h2 {
+  border-bottom: none;
+  margin-top: 0;
+}
+
+/*
+* ------------------
+* TABLEAU DE BORD ADMIN (admin.php)
+*--------------------
+*/
+main > p {
+  background-color: #ffffff;
+  border-left: 4px solid #0074c7;
+  padding: 0.9rem 1.1rem;
+  border-radius: 4px;
+}
+
+/*
+* ------------------
+* FORMULAIRES
+*--------------------
+* Couvre login_Template.php, register_Template.php, Agences.php, Users.php (Admin)
+*/
+form {
+  background-color: #ffffff;
+  border: 1px solid rgb(200, 205.5, 216.5);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-top: 1rem;
+  max-width: 480px;
+}
+form[style*="display:inline"] {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  max-width: none;
+  display: inline;
+}
+
+fieldset {
+  border: 1px solid rgb(200, 205.5, 216.5);
+  border-radius: 6px;
+  padding: 1rem 1.25rem 1.25rem;
+}
+
+legend {
+  color: #00497c;
+  font-weight: 700;
+  padding: 0 0.5rem;
+}
+
+label {
+  display: block;
+  color: #384050;
+  font-weight: 600;
+  margin-top: 0.85rem;
+  margin-bottom: 0.25rem;
+}
+
+input[type=text],
+input[type=email],
+input[type=tel],
+input[type=password],
+select {
+  width: 100%;
+  padding: 0.55rem 0.7rem;
+  border: 1px solid rgb(200, 205.5, 216.5);
+  border-radius: 4px;
   background-color: #f1f8fc;
+  color: #384050;
+  font-size: 0.95rem;
+}
+input[type=text]:focus-visible,
+input[type=email]:focus-visible,
+input[type=tel]:focus-visible,
+input[type=password]:focus-visible,
+select:focus-visible {
+  outline: none;
+  border-color: #0074c7;
+  box-shadow: 0 0 0 2px rgb(137.8, 206.1175879397, 255);
 }
 
+input[type=submit],
+fieldset button[type=submit] {
+  margin-top: 1.25rem;
+}
+
+main form > a {
+  margin-left: 0.75rem;
+  color: #cd2c2e;
+}
+main form > a:hover, main form > a:focus-visible {
+  color: rgb(154.6144578313, 33.1855421687, 34.6939759036);
+}
+
+/*
+* ------------------
+* MESSAGES DE RETOUR
+*--------------------
+* Paragraphe de confirmation/erreur affiché après ajout/édition/suppression
+* dans Agences.php / Users.php (issu de $message)
+*/
+main p:empty {
+  display: none;
+}
+
+/*
+* ------------------
+* TABLEAUX (Agences.php, Users.php, table.scss d'origine étendu)
+*--------------------
+*/
 table {
   border-collapse: collapse;
   border: 2px solid #384050;
   font-family: sans-serif;
-  font-size: 0.8rem;
-  letter-spacing: 1px;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+  width: 100%;
+  margin-top: 1rem;
+  background-color: #ffffff;
 }
 
 thead,
 tfoot {
-  background-color: rgb(228, 240, 245);
+  background-color: rgb(137.8, 206.1175879397, 255);
 }
 
 th,
 td {
-  border: 1px solid rgb(160, 160, 160);
-  padding: 8px 10px;
+  border: 1px solid rgb(200, 205.5, 216.5);
+  padding: 0.55rem 0.7rem;
+  text-align: left;
+}
+
+th {
+  color: #00497c;
 }
 
 tbody > tr:nth-of-type(even) {
-  background-color: rgb(237, 238, 242);
+  background-color: #f1f8fc;
+}
+
+tbody > tr:hover {
+  background-color: rgb(137.8, 206.1175879397, 255);
 }
 
 tfoot th {
@@ -47,6 +383,53 @@ tfoot th {
 
 tfoot td {
   font-weight: bold;
+}
+
+.users-list,
+table {
+  max-width: 100%;
+}
+
+.users-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.users-list .users_items {
+  background-color: #ffffff;
+  border: 1px solid rgb(200, 205.5, 216.5);
+  border-radius: 4px;
+  padding: 0.75rem 1rem;
+}
+
+/*
+* ------------------
+* RESPONSIVE
+*--------------------
+*/
+@media (max-width: 640px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .header nav {
+    width: 100%;
+    justify-content: flex-start;
+  }
+  main {
+    padding: 1.25rem 1rem;
+  }
+  form {
+    max-width: 100%;
+  }
+  table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */
