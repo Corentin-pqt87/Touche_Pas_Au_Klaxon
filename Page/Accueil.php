@@ -2,7 +2,7 @@
 <html  lang="fr">
     <head>
         <meta charset="utf-8" />
-        <title>MVC</title>
+        <title>Touche Pas Au Klaxon</title>
         <link rel="stylesheet" href="/../Style/main.css" />
     </head>
     <body>

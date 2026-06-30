@@ -1,5 +1,6 @@
 .
 ├── Asset
+├── brief de votre mission.pdf
 ├── Core
 │   ├── dataBase.php
 │   ├── defaultModel.php
@@ -11,17 +12,20 @@
 │   └── table.sql
 ├── index.php
 ├── Model
+│   ├── agenceModel.php
 │   ├── postModel.php
 │   └── userModel.php
 ├── Page
 │   ├── Accueil.php
 │   ├── Admin
+│   │   ├── Agences.php
 │   │   └── Users.php
 │   └── admin.php
 ├── README.md
 ├── run.sh
 ├── Style
 │   ├── main.css
+│   ├── main.css.map
 │   └── main.scss
 ├── Template
 │   ├── footer.php
@@ -30,5 +34,4 @@
 │   ├── login_Template.php
 │   └── register_Template.php
 └── tree
-
 
