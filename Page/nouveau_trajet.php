@@ -10,7 +10,7 @@
             <?php require_once __DIR__ . "/../Template/header.php"; ?>
         </header>
         <main>
-            <?php require_once __DIR__ . "/../Template/home.php"; ?>
+            <h1>Nouveau trajet</h1>
         </main>
         <footer>
             <?php require_once __DIR__ . "/../Template/footer.php"; ?>

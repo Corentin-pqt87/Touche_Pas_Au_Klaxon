@@ -51,14 +51,14 @@ CREATE TABLE `posts` (
   `departure` int NOT NULL,
   `arrival` int NOT NULL,
   `travel_date` datetime DEFAULT NULL,
-  `seats` int DEFAULT 1,
+  `seats` int DEFAULT '1',
   `idusers` int DEFAULT NULL,
+  `arrival_date` datetime DEFAULT NULL,
   PRIMARY KEY (`idposts`),
   KEY `posts_users` (`idusers`),
   KEY `posts_departure_agence` (`departure`),
   KEY `posts_arrival_agence` (`arrival`),
-  CONSTRAINT `posts_users` FOREIGN KEY (`idusers`) REFERENCES `users` (`idusers`),
+  CONSTRAINT `fk_posts_arrival` FOREIGN KEY (`arrival`) REFERENCES `agences` (`idagences`),
   CONSTRAINT `fk_posts_departure` FOREIGN KEY (`departure`) REFERENCES `agences` (`idagences`),
-  CONSTRAINT `fk_posts_arrival` FOREIGN KEY (`arrival`) REFERENCES `agences` (`idagences`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
+  CONSTRAINT `posts_users` FOREIGN KEY (`idusers`) REFERENCES `users` (`idusers`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
