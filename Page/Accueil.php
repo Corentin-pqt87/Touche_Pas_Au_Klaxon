@@ -1,3 +1,10 @@
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+require_once __DIR__ . "/../Model/postModel.php";
+$availablePosts = getAvailablePosts();
+?>
 <!DOCTYPE html>
 <html  lang="fr">
     <head>

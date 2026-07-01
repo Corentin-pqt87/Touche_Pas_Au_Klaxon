@@ -19,8 +19,11 @@
 │   ├── Accueil.php
 │   ├── Admin
 │   │   ├── Agences.php
+│   │   ├── Trajets.php
 │   │   └── Users.php
-│   └── admin.php
+│   ├── admin.php
+│   ├── nouveau_trajet.php
+│   └── Profil.php
 ├── README.md
 ├── run.sh
 ├── Style

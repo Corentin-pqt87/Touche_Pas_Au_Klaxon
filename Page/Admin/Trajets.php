@@ -18,27 +18,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $action = $_POST['action'] ?? '';
 
     if ($action === 'add') {
-        $title       = trim($_POST['title']);
-        $departure   = intval($_POST['departure']);
-        $arrival     = intval($_POST['arrival']);
-        $travel_date = $_POST['travel_date'];
-        $seats       = intval($_POST['seats']);
-        $idusers     = intval($_POST['idusers']);
+        $title        = trim($_POST['title']);
+        $departure    = intval($_POST['departure']);
+        $arrival      = intval($_POST['arrival']);
+        $travel_date  = $_POST['travel_date'];
+        $arrival_date = !empty($_POST['arrival_date']) ? $_POST['arrival_date'] : null;
+        $seats        = intval($_POST['seats']);
+        $idusers      = intval($_POST['idusers']);
 
-        addPost($title, $departure, $arrival, $travel_date, $seats, $idusers)
+        addPost($title, $departure, $arrival, $travel_date, $arrival_date, $seats, $idusers)
             ? $message = "Trajet ajouté."
             : $message = "Erreur lors de l'ajout.";
 
     } elseif ($action === 'edit') {
-        $id          = intval($_POST['idposts']);
-        $title       = trim($_POST['title']);
-        $departure   = intval($_POST['departure']);
-        $arrival     = intval($_POST['arrival']);
-        $travel_date = $_POST['travel_date'];
-        $seats       = intval($_POST['seats']);
-        $idusers     = intval($_POST['idusers']);
+        $id           = intval($_POST['idposts']);
+        $title        = trim($_POST['title']);
+        $departure    = intval($_POST['departure']);
+        $arrival      = intval($_POST['arrival']);
+        $travel_date  = $_POST['travel_date'];
+        $arrival_date = !empty($_POST['arrival_date']) ? $_POST['arrival_date'] : null;
+        $seats        = intval($_POST['seats']);
+        $idusers      = intval($_POST['idusers']);
 
-        updatePost($id, $title, $departure, $arrival, $travel_date, $seats, $idusers)
+        updatePost($id, $title, $departure, $arrival, $travel_date, $arrival_date, $seats, $idusers)
             ? $message = "Trajet modifié."
             : $message = "Erreur lors de la modification.";
 
@@ -125,6 +127,11 @@ $users   = findAllUsersForSelect();
                     value="<?= $editPost ? date('Y-m-d\TH:i', strtotime($editPost['travel_date'])) : '' ?>">
             </label><br>
 
+            <label>Date et heure d'arrivée<br>
+                <input type="datetime-local" name="arrival_date"
+                    value="<?= ($editPost && $editPost['arrival_date']) ? date('Y-m-d\TH:i', strtotime($editPost['arrival_date'])) : '' ?>">
+            </label><br>
+
             <label>Places disponibles<br>
                 <input type="number" name="seats" min="1" required value="<?= htmlspecialchars($editPost['seats'] ?? 1) ?>">
             </label><br>
@@ -159,7 +166,8 @@ $users   = findAllUsersForSelect();
                         <th>Titre</th>
                         <th>Départ</th>
                         <th>Arrivée</th>
-                        <th>Date</th>
+                        <th>Date de départ</th>
+                        <th>Date d'arrivée</th>
                         <th>Places</th>
                         <th>Conducteur</th>
                         <th>Actions</th>
@@ -173,6 +181,7 @@ $users   = findAllUsersForSelect();
                             <td><?= htmlspecialchars($post['departure_name'] ?? '—') ?></td>
                             <td><?= htmlspecialchars($post['arrival_name'] ?? '—') ?></td>
                             <td><?= htmlspecialchars(date('d/m/Y H:i', strtotime($post['travel_date']))) ?></td>
+                            <td><?= $post['arrival_date'] ? htmlspecialchars(date('d/m/Y H:i', strtotime($post['arrival_date']))) : '—' ?></td>
                             <td><?= htmlspecialchars($post['seats']) ?></td>
                             <td><?= htmlspecialchars($post['user_name'] ?? '—') ?></td>
                             <td>
