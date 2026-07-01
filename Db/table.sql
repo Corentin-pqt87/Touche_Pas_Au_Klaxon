@@ -62,3 +62,18 @@ CREATE TABLE `posts` (
   CONSTRAINT `fk_posts_departure` FOREIGN KEY (`departure`) REFERENCES `agences` (`idagences`),
   CONSTRAINT `posts_users` FOREIGN KEY (`idusers`) REFERENCES `users` (`idusers`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+-- Table `inscription` (inscription d'un utilisateur a un trajet)
+-- --------------------------------------------------------
+CREATE TABLE TPAK.inscription (
+    idinscription INT AUTO_INCREMENT NOT NULL,
+    idusers INT NULL,
+    idposts INT NULL,
+    PRIMARY KEY (idinscription), -- Déclaration obligatoire de la clé primaire
+    CONSTRAINT inscription_users_FK FOREIGN KEY (idusers) REFERENCES TPAK.users(idusers),
+    CONSTRAINT inscription_posts_FK FOREIGN KEY (idposts) REFERENCES TPAK.posts(idposts)
+)
+ENGINE=InnoDB
+DEFAULT CHARSET=utf8mb4
+COLLATE=utf8mb4_0900_ai_ci;
