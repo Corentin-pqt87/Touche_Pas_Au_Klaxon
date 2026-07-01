@@ -79,7 +79,7 @@ $users   = findAllUsersForSelect();
 </head>
 <body>
     <header>
-        <?php require_once __DIR__ . "/../../Template/header.php"; ?>
+        <?php require_once __DIR__ . "/../../Template/admin_header.php"; ?>
     </header>
     <main>
         <h2><?= $editPost ? 'Modifier un trajet' : 'Ajouter un trajet' ?></h2>

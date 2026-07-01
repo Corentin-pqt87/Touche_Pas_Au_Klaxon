@@ -99,15 +99,7 @@ $allPosts = getAllPosts(); // Utilise la fonction existante de ton postModel.php
 </head>
 <body>
     <header>
-        <div class="header">
-            <h1>Panel Admin : Inscriptions</h1>
-            <nav>
-                <a href="../admin.php" class="btn">Retour Index Admin</a> |
-                <a href="Users.php" class="btn">Utilisateurs</a> |
-                <a href="Agences.php" class="btn">Agences</a> |
-                <a href="Trajets.php" class="btn">Trajets</a>
-            </nav>
-        </div>
+        <?php require_once __DIR__ . "/../../Template/admin_header.php"; ?>
     </header>
 
     <main>
