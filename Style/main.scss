@@ -444,3 +444,42 @@ table {
         white-space: nowrap;
     }
 }
+
+.nouveau-trajet {
+    display: flex;
+    flex-direction: column;
+    align-items: center;      /* Aligne horizontalement au centre de l'écran */
+    justify-content: center;   /* Aligne verticalement au centre de l'écran */
+    text-align: center;        /* Aligne les textes au centre */
+    width: 100%;               /* Force à prendre tout l'espace horizontal disponible */
+    min-height: 60vh;          /* Donne de la hauteur pour rendre le centrage visible */
+    padding: 2rem 1rem;
+
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;   /* Centre les éléments internes du formulaire */
+        gap: 15px;
+        width: 100%;
+        max-width: 400px;      /* Fixe une largeur maximale pour l'esthétique */
+        margin: 0 auto;        /* Centre le bloc du formulaire lui-même */
+
+        div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+
+            label {
+                margin-bottom: 5px;
+                font-weight: bold;
+            }
+
+            input, select {
+                width: 100%;
+                text-align: center; /* Centre le texte écrit ou choisi dans l'input */
+                padding: 8px;
+            }
+        }
+    }
+}

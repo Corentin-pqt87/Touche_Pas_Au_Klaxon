@@ -69,8 +69,6 @@ a:focus-visible {
 * ------------------
 * BOUTONS
 *--------------------
-* Couvre les <a class="btn">, <a class="btn-logout"> du header,
-* et les <button>/<input type="submit"> des formulaires.
 */
 .btn {
   display: inline-block;
@@ -251,7 +249,6 @@ main > p {
 * ------------------
 * FORMULAIRES
 *--------------------
-* Couvre login_Template.php, register_Template.php, Agences.php, Users.php (Admin)
 */
 form {
   background-color: #ffffff;
@@ -330,8 +327,6 @@ main form > a:hover, main form > a:focus-visible {
 * ------------------
 * MESSAGES DE RETOUR
 *--------------------
-* Paragraphe de confirmation/erreur affiché après ajout/édition/suppression
-* dans Agences.php / Users.php (issu de $message)
 */
 main p:empty {
   display: none;
@@ -430,6 +425,40 @@ table {
     overflow-x: auto;
     white-space: nowrap;
   }
+}
+.nouveau-trajet {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Aligne horizontalement au centre de l'écran */
+  justify-content: center; /* Aligne verticalement au centre de l'écran */
+  text-align: center; /* Aligne les textes au centre */
+  width: 100%; /* Force à prendre tout l'espace horizontal disponible */
+  min-height: 60vh; /* Donne de la hauteur pour rendre le centrage visible */
+  padding: 2rem 1rem;
+}
+.nouveau-trajet form {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centre les éléments internes du formulaire */
+  gap: 15px;
+  width: 100%;
+  max-width: 400px; /* Fixe une largeur maximale pour l'esthétique */
+  margin: 0 auto; /* Centre le bloc du formulaire lui-même */
+}
+.nouveau-trajet form div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.nouveau-trajet form div label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+.nouveau-trajet form div input, .nouveau-trajet form div select {
+  width: 100%;
+  text-align: center; /* Centre le texte écrit ou choisi dans l'input */
+  padding: 8px;
 }
 
 /*# sourceMappingURL=main.css.map */
