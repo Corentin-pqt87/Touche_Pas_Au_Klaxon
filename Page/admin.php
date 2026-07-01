@@ -36,6 +36,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['user_role'] != 1) {
             <a href="/Page/Admin/Users.php" class="btn">Gérer les utilisateurs</a>
             <a href="/Page/Admin/Agences.php" class="btn">Gérer les agences</a>
             <a href="/Page/Admin/Trajets.php" class="btn">Gérer les trajets</a>
+            <a href="/Page/Admin/Inscriptions.php" class="btn">Gérer les inscriptions</a>
         </main>
     </body>
 </html>

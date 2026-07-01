@@ -1,6 +1,6 @@
 <?php 
 //require "../Core/defaultModel.php";
-require __DIR__ . "/../Core/defaultModel.php";
+require_once __DIR__ . "/../Core/defaultModel.php";
 
 function getPosts() {
     return findAll('SELECT * FROM posts');
@@ -97,4 +97,14 @@ function getAvailablePosts() {
          ORDER BY p.travel_date ASC'
     );
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+/**
+ * INSCRIPTION 
+ */
+
+function deleteInscription($id) {
+    $bdd = connection();
+    $stmt = $bdd->prepare('DELETE FROM inscription WHERE idinscription = :id');
+    return $stmt->execute(['id' => $id]);
 }
