@@ -86,6 +86,7 @@ function getAvailablePosts() {
             p.travel_date,
             p.arrival_date,
             p.seats,
+            p.idusers, -- Ajout nécessaire ici
             da.name AS departure_name,
             aa.name AS arrival_name
          FROM posts p
@@ -97,4 +98,3 @@ function getAvailablePosts() {
     );
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
- 
