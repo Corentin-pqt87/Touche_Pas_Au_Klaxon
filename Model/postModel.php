@@ -74,8 +74,25 @@ function updatePost($id, $title, $departure, $arrival, $travel_date, $arrival_da
 
 function deletePost($id) {
     $bdd = connection();
-    $stmt = $bdd->prepare('DELETE FROM posts WHERE idposts = :id');
-    return $stmt->execute(['id' => $id]);
+
+    try {
+        $bdd->beginTransaction();
+
+        // On supprime d'abord les inscriptions liées à ce trajet,
+        // sinon la contrainte de clé étrangère inscription_posts_FK bloque la suppression.
+        $stmtInscriptions = $bdd->prepare('DELETE FROM inscription WHERE idposts = :id');
+        $stmtInscriptions->execute(['id' => $id]);
+
+        // On supprime ensuite le trajet lui-même.
+        $stmt = $bdd->prepare('DELETE FROM posts WHERE idposts = :id');
+        $result = $stmt->execute(['id' => $id]);
+
+        $bdd->commit();
+        return $result;
+    } catch (Exception $e) {
+        $bdd->rollBack();
+        throw $e;
+    }
 }
 
 function getAvailablePosts() {

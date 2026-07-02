@@ -1,13 +1,16 @@
 .
 ├── Asset
+│   └── Capture d’écran du 2026-07-01 12-08-30.png
 ├── brief de votre mission.pdf
 ├── Core
 │   ├── dataBase.php
 │   ├── defaultModel.php
 │   ├── login.php
 │   ├── logout.php
-│   └── register.php
+│   ├── register.php
+│   └── subscribe.php
 ├── Db
+│   ├── dump-TPAK-202607011730.sql
 │   ├── start.sh
 │   └── table.sql
 ├── index.php
@@ -19,6 +22,7 @@
 │   ├── Accueil.php
 │   ├── Admin
 │   │   ├── Agences.php
+│   │   ├── Inscriptions.php
 │   │   ├── Trajets.php
 │   │   └── Users.php
 │   ├── admin.php
@@ -31,10 +35,12 @@
 │   ├── main.css.map
 │   └── main.scss
 ├── Template
+│   ├── admin_header.php
 │   ├── footer.php
 │   ├── header.php
 │   ├── home.php
 │   ├── login_Template.php
+│   ├── nouveau_trajet_form.php
 │   └── register_Template.php
 └── tree
 
