@@ -72,3 +72,7 @@ Pour éxécuter le projet, vous trouverez 2 fichiers.
 1. [`./Db/start.sh`](./Db/start.sh) : sert à l'ancer la base de donnée si cela n'est pas déja fait.
 2. [`./run.sh`](./run.sh) : sert à l'ancer le site internet.
 3. aller sur [`http://localhost:8000/`](http://localhost:8000/), vous serez automatiquement rediriger sur la page d'accueil.
+
+## Ajouter un/des compte(s) administrateur
+Pour ajouter un compte administrateur, connecter vous a votre base de donnée SQL et sur la page du internet du projet. Cliquer sur le bouton "inscription" et remplisez le formulaire. Une fois le compte créer et ajouter autoomatiquement à la base de donnée rendez vous sur votre application de géstion de de base de donnée SQL (MySQL ou DBeaver) puis sur la table "users" changer la valeur de "idrole" de 2 à 1 pour votre compte administrateur.\
+Une fois fait, sur le site déconnectez vous et reconnectez vous, vous serait désormer en sétion administrateur.
