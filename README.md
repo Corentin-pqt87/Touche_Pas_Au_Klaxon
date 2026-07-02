@@ -21,7 +21,7 @@ cd /opt/lampp/htdocs
 ```
 
 ##### 2.
-Télécharger le projet via GitHub$\to$Code$\to$ [Download Zip](https://github.com/Corentin-pqt87/Touche_Pas_Au_Klaxon/archive/refs/heads/main.zip) ou via la commande suivante
+Télécharger le projet via [GitHub Releases](https://github.com/Corentin-pqt87/Touche_Pas_Au_Klaxon/releases/tag/v1.0.0) ou via la commande suivante
 ```sh
 git clone "https://github.com/Corentin-pqt87/Touche_Pas_Au_Klaxon.git"
 ```
@@ -45,7 +45,7 @@ DB_PASSWORD=password
 ##### 1.
 Déplacez vous dans le répertoire que vous souhaiter
 ##### 2.
-Télécharger le projet via GitHub$\to$Code$\to$ [Download Zip](https://github.com/Corentin-pqt87/Touche_Pas_Au_Klaxon/archive/refs/heads/main.zip) ou via la commande suivante
+Télécharger le projet via [GitHub Releases](https://github.com/Corentin-pqt87/Touche_Pas_Au_Klaxon/releases/tag/v1.0.0) ou via la commande suivante
 ```sh
 git clone "https://github.com/Corentin-pqt87/Touche_Pas_Au_Klaxon.git"
 ```
