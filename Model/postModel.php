@@ -117,6 +117,87 @@ function getAvailablePosts() {
 }
 
 /**
+ * PROFIL UTILISATEUR
+ */
+
+/**
+ * Trajets créés par un utilisateur (en tant que conducteur)
+ */
+function getPostsByUser($idusers) {
+    $bdd = connection();
+    $stmt = $bdd->prepare(
+        'SELECT
+            p.idposts, p.title, p.travel_date, p.arrival_date, p.seats,
+            da.name AS departure_name,
+            aa.name AS arrival_name
+         FROM posts p
+         INNER JOIN agences da ON p.departure = da.idagences
+         INNER JOIN agences aa ON p.arrival   = aa.idagences
+         WHERE p.idusers = :idusers
+         ORDER BY p.travel_date DESC'
+    );
+    $stmt->execute(['idusers' => $idusers]);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+/**
+ * Trajets auxquels un utilisateur est inscrit (en tant que passager)
+ */
+function getInscriptionsByUser($idusers) {
+    $bdd = connection();
+    $stmt = $bdd->prepare(
+        'SELECT
+            i.idinscription, i.idposts,
+            p.title, p.travel_date, p.arrival_date,
+            da.name AS departure_name,
+            aa.name AS arrival_name
+         FROM inscription i
+         INNER JOIN posts p   ON i.idposts   = p.idposts
+         INNER JOIN agences da ON p.departure = da.idagences
+         INNER JOIN agences aa ON p.arrival   = aa.idagences
+         WHERE i.idusers = :idusers
+         ORDER BY p.travel_date DESC'
+    );
+    $stmt->execute(['idusers' => $idusers]);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+/**
+ * Désinscrit un utilisateur d'un trajet (vérifie que l'inscription lui appartient)
+ * et réattribue la place sur le trajet concerné.
+ */
+function unsubscribeUser($idinscription, $idusers) {
+    $bdd = connection();
+
+    try {
+        $bdd->beginTransaction();
+
+        // On vérifie que l'inscription appartient bien à cet utilisateur
+        $check = $bdd->prepare('SELECT idposts FROM inscription WHERE idinscription = :id AND idusers = :idusers');
+        $check->execute(['id' => $idinscription, 'idusers' => $idusers]);
+        $inscription = $check->fetch(PDO::FETCH_ASSOC);
+
+        if (!$inscription) {
+            $bdd->rollBack();
+            return false;
+        }
+
+        $delete = $bdd->prepare('DELETE FROM inscription WHERE idinscription = :id');
+        $delete->execute(['id' => $idinscription]);
+
+        // On réattribue la place disponible sur le trajet
+        $updateSeats = $bdd->prepare('UPDATE posts SET seats = seats + 1 WHERE idposts = :idposts');
+        $updateSeats->execute(['idposts' => $inscription['idposts']]);
+
+        $bdd->commit();
+        return true;
+    } catch (Exception $e) {
+        $bdd->rollBack();
+        throw $e;
+    }
+}
+
+/**
  * INSCRIPTION 
  */
 

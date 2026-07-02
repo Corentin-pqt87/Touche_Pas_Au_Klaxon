@@ -13,6 +13,7 @@ if (session_status() === PHP_SESSION_NONE) {
              *      boutton : "Connexion/Inscription";
              * };
              * Si l'utilisateur est connecté {
+             *      boutton : "Mon profil";
              *      Si l'utilisateur est admin {
              *          boutton : "Tableau de bord administrateur";
              *      } Sinon {
@@ -26,7 +27,9 @@ if (session_status() === PHP_SESSION_NONE) {
             <a href="/Template/register_Template.php" class="btn">Inscription</a>
         <?php else: ?>
             <p>Bonjour, <?= htmlspecialchars($_SESSION['user_name']) ?> !</p>
-            
+
+            <a href="/Page/Profil.php" class="btn">Mon profil</a>
+
             <?php if ($_SESSION['user_role'] == 1): // Admin ?>
                 <a href="/Page/admin.php" class="btn">Tableau de bord administrateur</a>
             <?php else: ?>
